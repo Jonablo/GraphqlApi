@@ -3,7 +3,7 @@ import { resolvers } from "./resolvers";
 
 const typeDefs = `
 
-type Query{
+type Query {
     hello: String
     greet(name: String!): String
     tasks: [Task]
@@ -13,22 +13,24 @@ type Task {
     _id: ID!
     title: String!
     description: String!
-    number:Int
+    number: Int
 }
 
-type Mutation{
+type Mutation {
   createTask(input: TaskInput): Task
 }
 
 input TaskInput {
   title: String!
   description: String!
-  number:Int
+  number: Int
 }
 
 `;
 
-export default makeExecutableSchema({
+const schema = makeExecutableSchema({
   typeDefs: typeDefs,
   resolvers: resolvers,
 });
+
+export default schema;
